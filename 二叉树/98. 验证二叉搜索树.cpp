@@ -31,3 +31,4 @@ public:
         mid(root->right,res);
         return ;
     }
+};
