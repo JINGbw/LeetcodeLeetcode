@@ -2,6 +2,98 @@
 
 7.4
 
+
+## 数组
+ 
+## 数组查找
+
+[1.寻找两数之和为给定值](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E6%95%B0%E7%BB%84/1.%20%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C.cpp)
+
+- 题目：给定一个整数数组nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个整数，并返回他们的数组下标
+- 思路：使用哈希表存放每个找到的数和它的下标(找到一对就可以了）//时间复杂度：O(1)//空间复杂度：O(n)
+
+[15.寻找三数之和为给定值](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E6%95%B0%E7%BB%84/15.%20%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C.cpp)
+- 题目：是找到所有满足三数之和且不重复的三元组
+- 思路：1. 排序 2. 循环每个数字，对于每个数字都在它后面剩下的位置两边夹（i+1，Num.size()）区间内找，使用两个指针一个从前向后，一个从后向前。时间复杂度：O(N^2)
+
+
+
+
+[169.出现次数超过n/2的数](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E6%95%B0%E7%BB%84/169.%E6%B1%82%E4%BC%97%E6%95%B0.cpp)
+- 思路：法一：排序，找中间的，法二：利用partition函数，法三：用哈希表
+- 法四：
+    - 剑指Offer中的，使用两个数字，用一个数记录数组中的一个数字，一个是次数，
+    - 如果下一个数字与保存的数字是一样的，则次数加1，如果不同，就次数减一，如果次数为0，
+    - 就保存下一个数字，把次数设为1，因为我们要找的数字出现的次数比其它全部数字的出现次数之和还
+
+- 该题的变种：寻找出现次数等于n/2的数字
+    - 上一种解法在数字个数为偶数的时候就失效了。修改方法为：在数组中随便找一个数字，再对剩下的数字做刚刚的操作
+    - 对比这个数字，和最后得到的数字，再遍历两遍原数组（一共遍历了三次数组复杂度为3n）
+
+[287.找到数组中重复的数字](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E6%95%B0%E7%BB%84/287.%20%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E6%95%B0.cpp)
+
+- 题目：找出数组中重复的数字 要求时间复杂度小与O(N^2)
+- 思路： 空间复杂度O(1)//对于这种数组在[0,n-1]范围内的问题，可以将值为i的元素调整到第i个位置上
+        //解法一：先排序再遍历(排序后相同数字都挨着)   时间O(NlogN) 空间：O(1) 不满足要求
+        //解法二：用集合 set 时间O(N) 空间：O(N) 不满足要求
+        //解法三：快慢指针，弗洛伊德的乌龟和兔子（循环检测）  （会认为你是有备而来的）时间复杂度0(1),空间复杂度O(N)
+        //如果数组的每一个数的取值都是不重复的，那么可以选取特定的数值来使，不断通过索引值得到数值，再将新的数值作为索引值，循环下去可以得到一个链路。如果有重复数字，数组nums一定会存在一个环路，问题变为如何查找环路起点问题。
+
+**旋转数组**       
+
+[153.寻找旋转排序数组中的最小值](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E6%95%B0%E7%BB%84/153.%20%E5%AF%BB%E6%89%BE%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC.cpp)
+- 题目：找到旋转排序数组的最小值（原来数组按照升序排列），且数组没有重复元素
+- 思路：利用二分法 1. 如果长度为1 // 2. 如果旋转偶数次// 3 . 二分法循环，边界条件[mid]和两边的[mid-1]和[mid+1]比较//4. 左边有序（到右边找） 右边有序（到左边找）
+    - //时间复杂度：和二分搜索一样 O(logN)
+    - //空间复杂度： O(1)
+- 注意！！：考虑mid在旋转点的左边和右边的情况
+
+
+[33.在旋转排序数组中寻找目标值](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E6%95%B0%E7%BB%84/33.%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84.cpp)
+
+- 题目：在旋转前是升序的旋转数组中寻找目标值，返回目标值的索引
+- 思路： 用二分法//0. 找到了  //1. mid在有序的一侧还是无序的一侧 //2. 目标在mid左边还是右边
+
+[参考：你真的会写二分查找吗？](https://www.cnblogs.com/luoxn28/p/5767571.html)
+- [数组二分查找](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E6%95%B0%E7%BB%84/%E4%BA%8C%E5%88%86%E6%B3%95%E6%80%BB%E7%BB%93.cpp)
+    - 找到key在数组中的下标
+    - 查找第一个与key相等的元素
+    - 查找最后一个与key相等的元素
+    - 查找最后一个等于或者小于key的元素
+    - 查找最后一个小于key的元素
+    - 查找第一个等于或者大于key的元素
+    - 查找第一个大于key的元素
+  
+
+### 数组子序列，子数组
+
+[53.找到数组中 具有最大和的连续子数组](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E6%95%B0%E7%BB%84/53.%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C.cpp)
+- 题目：找到给定数组中连续子数组的最大和
+- 思路：动态规划的状态转移方程：
+
+-一样的题： 剑指Offer [连续子数组的最大和](https://github.com/JINGbw/NewCoder/blob/master/%E6%95%B0%E7%BB%84/%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%92%8C.cpp)  
+
+
+### 数组排序
+
+[179.将数组中的数排成最大的数](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E6%95%B0%E7%BB%84/179.%E6%9C%80%E5%A4%A7%E6%95%B0.cpp)
+- 思路：1. 排序，排序重写Lambda函数，bool cmp() 利用to_string(x) 2. 如果第一个字符为'0'说明就是0了 
+
+## 二维数组
+### 二维数组查找
+
+[74.有序二维矩阵中是否有目标值](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E6%95%B0%E7%BB%84/74.%20%E6%90%9C%E7%B4%A2%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5.cpp)
+- 题目：二维数组从左到右依次变大，从上到下依次变大，找到目标数字
+- 思路：法一：利用二分法找到该数所在的行，再用二分法找到这个数。法二：从左下角或者右上角开始找，可以根据Target与当前元素的大小关系来缩小查找区间
+
+[79.二维数组中是否存在一个单词](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E6%95%B0%E7%BB%84/79.%E5%8D%95%E8%AF%8D%E6%90%9C%E7%B4%A2(%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84).cpp)
+- 题目：搜索二维数组中是否存在一个单词，每个位置只能访问一次
+- 思路：回溯法 ，利用一个bool数组来记录这个位置是否访问过。使用变量记录当前走到了单词的哪个位置，
+
+
+[62.从二维数组的左上角走到右下角有多少种不同的路径（只能向右向下走）](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E6%95%B0%E7%BB%84/62.%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84.cpp)
+
+
 ## 字符串
 ### 字符串判断
 [125.是否为回文字符串](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E5%AD%97%E7%AC%A6%E4%B8%B2/125.%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2.cpp)
@@ -92,52 +184,6 @@
 
 [203.移除链表元素(删除链表中值为指定值的节点)](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E9%93%BE%E8%A1%A8/203.%E7%A7%BB%E9%99%A4%E9%93%BE%E8%A1%A8%E5%85%83%E7%B4%A0.cpp)
  
-## 数组
- 
-## 数组查找
-
-[1.寻找两数之和为给定值](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E6%95%B0%E7%BB%84/1.%20%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C.cpp)
-
-[15.寻找三数之和为给定值](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E6%95%B0%E7%BB%84/15.%20%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C.cpp)
-
-[153.寻找旋转排序数组中的最小值](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E6%95%B0%E7%BB%84/153.%20%E5%AF%BB%E6%89%BE%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC.cpp)
-
-[169.出现次数超过n/2的数](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E6%95%B0%E7%BB%84/169.%E6%B1%82%E4%BC%97%E6%95%B0.cpp)
-
-[287.找到数组中重复的数字](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E6%95%B0%E7%BB%84/287.%20%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E6%95%B0.cpp)
-
-[33.在旋转排序数组中寻找目标值](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E6%95%B0%E7%BB%84/33.%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84.cpp)
-
-[参考：你真的会写二分查找吗？](https://www.cnblogs.com/luoxn28/p/5767571.html)
-- [数组二分查找](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E6%95%B0%E7%BB%84/%E4%BA%8C%E5%88%86%E6%B3%95%E6%80%BB%E7%BB%93.cpp)
-    - 找到key在数组中的下标
-    - 查找第一个与key相等的元素
-    - 查找最后一个与key相等的元素
-    - 查找最后一个等于或者小于key的元素
-    - 查找最后一个小于key的元素
-    - 查找第一个等于或者大于key的元素
-    - 查找第一个大于key的元素
-  
-
-### 数组子序列，子数组
-
-[53.找到数组中 具有最大和的连续子数组](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E6%95%B0%E7%BB%84/53.%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C.cpp)
-
-
-### 数组排序
-
-[179.将数组中的数排成最大的数](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E6%95%B0%E7%BB%84/179.%E6%9C%80%E5%A4%A7%E6%95%B0.cpp)
-
-## 二维数组
-
-### 二维数组查找
-
-[74.有序二维矩阵中是否有目标值](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E6%95%B0%E7%BB%84/74.%20%E6%90%9C%E7%B4%A2%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5.cpp)
-
-[79.二维数组中是否存在一个单词](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E6%95%B0%E7%BB%84/79.%E5%8D%95%E8%AF%8D%E6%90%9C%E7%B4%A2(%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84).cpp)
-
-[62.从二维数组的左上角走到右下角有多少种不同的路径（只能向右向下走）](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E6%95%B0%E7%BB%84/62.%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84.cpp)
-
  
 
 ## 二叉树
