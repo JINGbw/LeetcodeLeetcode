@@ -28,9 +28,9 @@ public:
 };
 // class LCS {
 // public:
+// 这个下标就是按照数组的下标来的 要注意下标 
 //     int findLCS(string A, int n, string B, int m) {
 //         vector<vector<int> > dp(m+1,vector<int>(n+1,0));
-//         //int maxx = 0;
 //         for(int i = 1; i <= m; i++) {
 //             for(int j = 1;j <= n ;j++){
 //                 if (A[j-1]==B[i-1]){
