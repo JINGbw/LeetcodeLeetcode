@@ -158,15 +158,14 @@
 [最长回文子串的长度](https://www.nowcoder.com/questionTerminal/b4525d1d84934cf280439aeecc36f4af)
 - 有点像最长上升子序列的长度 
 - 状态转移矩阵  
-  $dp[i][j]=
+ 
+$$$dp[i][j]=
 \begin{cases}
 true& \text{字符串从i+1到j-1是回文串，且是s[i]==s[j]}\\
 false& \text{其他}
-\end{cases}$$
-\end{CJK*}
-\end{document}$
+\end{cases}$$$
 
- $dp[i][j]=
+$dp[i][j]=
 \begin{cases}
 true& \text{dp[i+1][j-1]=true&&s[i][j]}\\
 false& \text{其他}
