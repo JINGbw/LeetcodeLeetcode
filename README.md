@@ -127,27 +127,66 @@
 **LIS (最长递增子序列）**
     
 [300.最长递增子序列,求一个数组的最长上升子序列的长度](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E5%AD%97%E7%AC%A6%E4%B8%B2/300.%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97.cpp) 
+- 题目：求数组中最长递增子序列的长度
+- 思路：状态转移矩阵 //时间复杂度：O(n^2) 有两个n的循环。//空间复杂度：O(n)，用了大小为n的矩阵 dp。
+    - dp[i] = 1 初始化
+    - dp[i] = max(dp[j]+1,dp[i])
+
 
 
 **LCS, LCS有两道经典问题 最长公共子串和最长公共子序列**
 
-- 最长公共子串（在数组中是连续的）
+
+1. 最长公共子序列 （在数组中不连续）
+
+[最长公共子序列](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E5%AD%97%E7%AC%A6%E4%B8%B2/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97.cpp)
+- 题目：求两个字符串的最长公共子序列（不一定是连续的）
+- 思路：使用状态转移矩阵 dp[m+1][n+1] (m+1行，n+1列)
+    - 假设dp[i][j]表示为字符串str1的前i个字符和字符串str2的前j个字符的最长公共子序列的长度。（先填第0行和第0列，再填一行一行的填）
+    - 1. dp[0][j] = 0; (0<=j<=m)
+    - 2. dp[i][0] = 0; (0<=i<=n)
+    - 3. dp[i][j] = dp[i-1][j-1] +1; (str1[i-1] == str2[j-1])
+    - 4. dp[i][j] = max{dp[i][j-1],dp[i-1][j]}; (str1[i-1] != str2[j-1])
+ - 注意：输入的字符串的长度（参数），
+ - //注意：这里的i和j对应的是字符串的i和j但是二维数组的坐标是要比字符串的都多1的
+ - //字符串下标的范围是 0到m-1和0到n-1但是数组是0到m和0到n 
+ 
+2. 最长公共子串（在数组中是连续的）
 
 [最长公共子串的长度 LCS ](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E5%AD%97%E7%AC%A6%E4%B8%B2/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2.cpp)
+- 题目：求两个字符串的公共子串的长度
+- 思路：动态规划转移方程：
+    - 1. dp[0][j] = 0; (0<=j<=m)
+    - 2. dp[i][0] = 0; (0<=i<=n) 
+    - 3. dp[i][j] = dp[i-1][j-1] +1; (str1[i] == str2[j])
+    - 4. dp[i][j] = 0; (str1[i] != str2[j])
+因为最长公共子串要求必须在原串中是连续的，所以一但某处出现不匹配的情况，此处的值就重置为0。
 
--  最长公共子序列 （在数组中不连续）
-   
-[最长公共子序列](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E5%AD%97%E7%AC%A6%E4%B8%B2/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97.cpp)
+
+ **最长回文子串的长度**
+[最长回文子串的长度（力扣5）](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E5%AD%97%E7%AC%A6%E4%B8%B2/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2.cpp)
+- 思路1动态规划：循环所有可能的字符串长度，先计算对角线，再将对角线向斜上方平移。 
+    - 状态转移矩阵:
+    - dp[i][i]=1
+    - dp[i][i+1]=1 if str[i]==str[i+1] //从i到j是回文串的条件是 [i]==[j]并且 字符串从i+1到j-1是回文串 
+- 思路2manacher算法：
+- 思路3中心扩展法：分奇数和偶数两种情况。
+
+
+
+ 
+初始状态
 
 - LCS问题Leetcode583,712
+ 
 
 **题目OJ链接(牛客网)**
 
-[LIS最长递增子序列](https://www.nowcoder.com/questionTerminal/585d46a1447b4064b749f08c2ab9ce66)
+[1. LIS最长递增子序列](https://www.nowcoder.com/questionTerminal/585d46a1447b4064b749f08c2ab9ce66)
 
-[LCS最长公共子序列](https://www.nowcoder.com/questionTerminal/c996bbb77dd447d681ec6907ccfb488a)
+[2. LCS最长公共子序列](https://www.nowcoder.com/questionTerminal/c996bbb77dd447d681ec6907ccfb488a)
 
-[LCS最长公共子串](https://www.nowcoder.com/questionTerminal/02e7cc263f8a49e8b1e1dc9c116f7602)
+[3. LCS最长公共子串](https://www.nowcoder.com/questionTerminal/02e7cc263f8a49e8b1e1dc9c116f7602)
 
 [LCP最长公共前缀](https://leetcode-cn.com/problems/longest-common-prefix)
 
@@ -156,34 +195,7 @@
 [字符串交错组成](https://www.nowcoder.com/question/next?pid=116376&qid=25107&tid=25351883)
 
 [最长回文子串的长度](https://www.nowcoder.com/questionTerminal/b4525d1d84934cf280439aeecc36f4af)
-- 有点像最长上升子序列的长度 
-- 状态转移矩阵  
 
-$$ dp[i][j]=\left\{
-\begin{aligned}
-true ,  字符串从i+1到j-1是回文串，且s[i]==s[j]  \\
-false , 其他
-\end{aligned}
-\right.
-$$
-
-$$dp[i][j]=\left\{ 
-\right.
-\right.
-\right.
-\begin{cases}
-true& \text{字符串从i+1到j-1是回文串，且是s[i]==s[j]}\\
-false& \text{其他}
-\end{cases}$$
-
-$dp[i][j]=
-\begin{cases}
-true& \text{dp[i+1][j-1]=true&&s[i][j]}\\
-false& \text{其他}
-\end{cases}$$
-\end{CJK*}
-\end{document}$
- 
 
 ## 链表
 ### 链表查找
