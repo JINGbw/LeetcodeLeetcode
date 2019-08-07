@@ -164,6 +164,7 @@
 
 
  **最长回文子串的长度**
+ 
 [最长回文子串的长度（力扣5）](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E5%AD%97%E7%AC%A6%E4%B8%B2/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2.cpp)
 - 思路1动态规划：循环所有可能的字符串长度，先计算对角线，再将对角线向斜上方平移。 
     - 状态转移矩阵:
