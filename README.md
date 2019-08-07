@@ -93,10 +93,13 @@
 
 [62.从二维数组的左上角走到右下角有多少种不同的路径（只能向右向下走）](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E6%95%B0%E7%BB%84/62.%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84.cpp)
 
-
 ## 字符串
 ### 字符串判断
 [125.是否为回文字符串](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E5%AD%97%E7%AC%A6%E4%B8%B2/125.%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2.cpp)
+- 题目：给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。
+- 思路：使用两个指针从字符串的两端向中间走，把字符转换为大写比较 如果相同就跳过，否则返回false;
+    - 注意边界条件：循环停止条件<= ，如果不是英文字母要时刻注意，比较两个指针的大小 p1<p2
+
 
 [20.判断只有括号的字符串是否有效 ](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E5%AD%97%E7%AC%A6%E4%B8%B2/20.%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7.cpp)
 
@@ -152,9 +155,25 @@
 
 [字符串交错组成](https://www.nowcoder.com/question/next?pid=116376&qid=25107&tid=25351883)
 
-[最长回文子串的长度]()
-- 背包问题
+[最长回文子串的长度](https://www.nowcoder.com/questionTerminal/b4525d1d84934cf280439aeecc36f4af)
+- 有点像最长上升子序列的长度 
+- 状态转移矩阵  
+  $dp[i][j]=
+\begin{cases}
+true& \text{字符串从i+1到j-1是回文串，且是s[i]==s[j]}\\
+false& \text{其他}
+\end{cases}$$
+\end{CJK*}
+\end{document}$
 
+ $dp[i][j]=
+\begin{cases}
+true& \text{dp[i+1][j-1]=true&&s[i][j]}\\
+false& \text{其他}
+\end{cases}$$
+\end{CJK*}
+\end{document}$
+ 
 
 ## 链表
 ### 链表查找
@@ -284,3 +303,13 @@ LCA问题可以看做是询问式的，即给出一系列询问，程序对一�
 - [122.买卖股票的最佳时机 II ]()
 - [123.买卖股票的最佳时机 III ]()
  
+## c++
+1. 判断是否为字母
+```
+isalnum(s)==true;//说明是字母 == false 不是字母
+
+```
+2. 把字母转为大写
+```
+toupper(s);
+```
