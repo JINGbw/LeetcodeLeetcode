@@ -290,6 +290,8 @@
 
 ### 二叉树查找
 [230.二叉搜索树中第k小的元素](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E4%BA%8C%E5%8F%89%E6%A0%91/230.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0.cpp)
+- 题目：二叉搜索树中第K小的元素，二叉搜索树中序遍历是升序的   时间：O(K) 空间：O(1)
+- 思路：中序遍历（递归），过程中减小k,当k=1的时候返回该节点
 
 [113.二叉树中和为目标值的所有路径](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E4%BA%8C%E5%8F%89%E6%A0%91/113.%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C.cpp)
 
