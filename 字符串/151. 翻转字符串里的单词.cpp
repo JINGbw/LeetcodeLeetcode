@@ -10,9 +10,8 @@ public:
         //string类型内部反转，reverse(s.begin(), s.end())。
         // 字符串结尾处需要额外处理，比较容易出错
         //  翻转整个字符串；删除前面的空格；用两个指针it和pre记录字符串中翻转的段落；用flag =1 代表有连续的空格   
-        if(s.length() == 0)
-            return s;
-    
+       if(s.length() == 0)
+            return s; 
         reverse(s.begin(), s.end());
         int flag = 0;
         auto it = s.begin(), pre = s.begin();//it指针向后走，pre指针指向子单词的第一个字符 
@@ -21,18 +20,24 @@ public:
             s.erase(it);
         
         while(it != s.end()){
-            if(*it == ' ' && flag == 1){
-                s.erase(it);
-                continue;
-            }
-            else if(*it == ' ' && flag == 0){//当it指向空格，且flag为0, 就翻转
-                flag = 1;
-                reverse(pre, it);
-            }
-            else if(flag == 1){//it指向新的子串头 
+            if(*it == ' ' ){
+                if(flag == 1){//it指向空格，有重复的空格 删除  
+                     s.erase(it);
+                     continue;
+                }
+                else if(flag == 0){//当it指向空格，且flag为0, 就翻转
+                     flag = 1;
+                     reverse(pre, it);
+                }
+                    
+            } 
+            else if(*it != ' ' ){//it指向不为空。 it指向新的子串头 
+                if(flag == 1){
                 pre = it;
-                flag = 0;
-            }
+                flag = 0; 
+                }
+                 
+            } 
             it ++;
         }
         //最后再翻转一次 
