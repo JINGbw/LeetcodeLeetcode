@@ -17,12 +17,16 @@ public:
         TreeNode *right;
         left = lowestCommonAncestor( root->left ,  p, q);
         right = lowestCommonAncestor( root->right ,  p, q);
+        //在左边找到了
         if(left&&!right)
             return left;
+        //在右边找到了
         if(!left&&right)
             return right;
+        //两边都没找到 
         if(!left&&!right)
             return nullptr;
+        //在左边找到一个，在右边找到一个就是root 
         return root;
     }
 };
