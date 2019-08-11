@@ -443,4 +443,106 @@ res.pop_back() //删除堆中最后的元素（最小的元素）
 - 大疆 力扣[984.不含AAA或BBB的字符串]
 - 大疆 力扣[869.重新排序得到2的幂]
 
+## 笔试中的输入输出 
 
+1. 
+> 第一行输入一个整数n，表示有n个整数 
+> 第二行输入n个整数，a1,a2,...,an，表示数组，每个数字之间用一个空格分隔
+```
+   int N;   // 输入总个数
+    cin >> N;
+    int temp;
+    vector<int> num;
+    for (int i = 0; i < N; i++){
+        cin >> temp;
+        num.push_back(temp);
+    }
+    //输出显示
+    for (int i = 0; i  < num.size(); i++)
+        cout << num[i] << " ";
+    cout << endl;
+ 
+```
+2. 
+> 第一行输入一行数，表示数组，每个数字之间用一个空格分隔 （不定长数组）
+```
+    int num;
+    vector<int>	nums;
+    while (cin >> num)//回车推出循环
+    {
+        nums.push_back(num);
+        //cout << num;
+        if (cin.get() == '\n')	break;
+    }
+    //输出显示
+    for (int i = 0; i  < nums.size(); i++)
+            cout << nums[i] << " ";
+    cout << endl;
+```
+3. 
+> 带有效位数的输出
+```
+     float t = 2.354;
+    // 输出五位数字
+    cout << setprecision(5) << 12.35467 << endl;
+    // 输出保留小数点后四个
+    cout.setf(ios::fixed);
+    cout << fixed << setprecision(6) << t << endl;
+    // 取消小数点固定位数
+    cout.unsetf(ios::fixed);
+    cout << t << endl;
+```
+4. 
+> 一行输入，空格分割，表示字符串数组。(不定长字符串数组)
+```
+    string str;
+    vector<string>	ss;
+    while (cin >> str)//回车推出循环
+    {
+     ss.push_back(str);
+      if (cin.get() == '\n')	break;
+
+    }
+    //输出显示
+    for (int i = 0; i  < ss.size(); i++)
+                cout << ss[i] << " ";
+    cout << endl;
+```
+5. 第一行是数T,表示有T组数据。 每一组数据的第一行是一个01序列，表示序列s,第二行是另一个01序列，表示序列T 
+6. 第一行是一个正整数N，最大为100。之后是多行字符串（行数大于N）， 每一行字符串可能含有空格，字符数不超过1000。
+
+7. 
+> 第一行是两个数，表示两个数组的长度
+> 第二行是第一个数组
+> 第三行是第二个数组
+``` 
+    int num;
+    int N,M;
+    cin >> N >> M;
+    int cnt = 0;
+    vector<int> nums2;
+    vector<int> nums3;
+    while (cnt < N)
+    {
+        cnt++;
+        cin >> num;
+       
+        nums2.push_back(num);
+    } 
+    cnt = 0;
+    while (cnt < M)
+    {
+        cnt++;
+        cin >> num;
+         
+        nums3.push_back(num);
+    } 
+    //输出显示
+    for (int i = 0; i  < nums2.size(); i++)
+        cout << nums2[i] << " ";
+    cout << endl;
+    //输出显示
+    for (int i = 0; i  < nums3.size(); i++)
+        cout << nums3[i] << " ";
+    cout << endl;
+```
