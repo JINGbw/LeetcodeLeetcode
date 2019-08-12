@@ -546,3 +546,76 @@ res.pop_back() //删除堆中最后的元素（最小的元素）
         cout << nums3[i] << " ";
     cout << endl;
 ```
+## 计算AUC 
+```
+#include <QCoreApplication>
+#include <iostream>
+using namespace std;
+
+//方法一：利用公式计算AUC( \sum{rankp} - m(m+1)/2)/mn
+double AUC1(int * a, double * b,int n){
+   int c[10];
+   double res = 0 ;
+   int mp = 0 ;//记录正样本的个数
+   int mm = 0;//记录负样本的个数
+   for(int i = 0;i<n;i++){
+          c[i] =  n-i;
+          if(a[i]==1)
+              mp++;
+          if(a[i]==0)
+              mm++;
+   }
+   int sum = 0;
+   for(int i = 0;i<n;i++){
+       if(a[i]==1)
+          sum+=c[i];
+   }
+   res =sum-(mp+1)*mp/2;
+   res  = res / (mp*mm);
+   return res;
+}
+//方法二： 绘制曲线求auc
+double AUC2(int * a, double * b,int n){
+    double x0 = 0,y0 = 0;
+    double x1 = 0,y1 = 0;
+    double N =0,P =0;
+    double sum = 0;
+    for(int i = 0;i<n;i++){
+           if(a[i]==1)
+               P++;
+           if(a[i]==0)
+               N++;
+    }
+    for(int i = 0;i<n;i++){
+        if(a[i]==1){
+            x1 = x0;
+            y1 = y0+(1/N);
+
+        }
+        else{
+            x1 = x0+(1/P);
+            y1 = x1;
+        }
+        sum =sum + ((y1+y0)*(x1-x0))/2;
+        x0 = x1;
+        y0 = y1;
+    }
+    return sum;
+}
+
+int main(int argc )
+{
+     int y[] = {1,0,1,1,0,0,0,1,1,0};
+     //一共有10个样本，其中有5个正样本5个负样本
+     double  pred[] = {0.9, 0.8, 0.7 , 0.68 ,0.67 ,0.6,0.55,0.45,0.2,0.1};
+     int n = 10;
+     //这是它的预测值从大到小排列
+     double auc1 = AUC1(y,pred,n);
+     double auc2 = AUC2(y,pred,n);
+     cout<<auc1<<endl;
+     cout<<auc2<<endl;
+    return 0;
+}
+
+
+```
