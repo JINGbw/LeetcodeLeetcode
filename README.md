@@ -512,7 +512,7 @@ LCA问题可以看做是询问式的，即给出一系列询问，程序对一�
 
 ### [123.买卖股票的最佳时机 III ]
  
-### 股票问题的通用框架 
+### [股票问题的通用框架](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iii/solution/yi-ge-tong-yong-fang-fa-tuan-mie-6-dao-gu-piao-wen/)
 ```
 dp[i][k][0] = max(dp[i-1][k][0], dp[i-1][k][1] + prices[i])
               max(   选择 rest  ,           选择 sell      )
