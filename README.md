@@ -524,11 +524,13 @@ LCA问题可以看做是询问式的，即给出一系列询问，程序对一�
       //如果i = 0 了 , 需要把 nums2中的全都拷贝过来 
 
 #### 21.合并两个有序的链表
+- 题目：合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。
 - [思路](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E9%93%BE%E8%A1%A8/21.%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8.cpp)
 
 #### 23.合并k个排序链表
-- [思路](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E9%93%BE%E8%A1%A8/23.%E5%90%88%E5%B9%B6K%E4%B8%AA%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8.cpp)
-
+- [思路](https://github.com/JINGbw/LeetcodeLeetcode/blob/master/%E9%93%BE%E8%A1%A8/23.%E5%90%88%E5%B9%B6K%E4%B8%AA%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8.cpp) 两两合并链表，合并k-1次 
+    - 时间复杂度：O(KN),k为链表的数目
+    - 空间复杂度：O(1)
 ## 动态规划
 ### [上台阶 ]
 ### [64.最小路径和]
