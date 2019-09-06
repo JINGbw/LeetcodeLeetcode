@@ -17,11 +17,12 @@ public:
         }
         //pre指向第m-1个节点
         ListNode *cur = pre->next;
+        //把t节点插到 cur和pre中间 
         for(int j = m;j<n;j++){
-            ListNode *nt = cur->next;
-            cur->next = nt->next;
-            nt->next = pre->next;
-            pre->next = nt;
+            ListNode *t = cur->next;
+            cur->next = t->next;
+            t->next = pre->next;
+            pre->next = t;
         }
           return dummy->next ; 
     } 
