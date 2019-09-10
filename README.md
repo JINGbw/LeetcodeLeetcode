@@ -169,7 +169,38 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
     - 查找最后一个小于key的元素
     - 查找第一个等于或者大于key的元素
     - 查找第一个大于key的元素
-  
+    
+#### [两个有序数组的中位数]
+- 题目：求两个有序数组的中位数，要求时间复杂度O(log(m+n))
+- 先合并再求中位数的时间复杂度是nlogn。
+- 思路：（二分排序）一共分为三步
+    - ```COUNT(Left) == COUNT(Right);```
+    - ```ANY(Left) <= ANY(Right)```
+    - 一共分为三步，
+        - 1. x代表数组A中的坐标，y代表在数组B中的坐标，我们要求x和y的关系使得，在A数组在x左边的元素个数等于B数组在y左边的个数
+            - 当m + n为偶数时，(COUNT(A.Left) + COUNT(B.Left) = x + y) == (COUNT(A.Right)+COUNT(B.Right) = m - x + n - y)
+            - 当m + n为奇数时，(COUNT(Left) = x + y) == (COUNT(Right) = m - x + n - y + 1)
+            - 也就是说：$2(x+y) = m + n + (m + n)%2 即： y = {{ m + n + {(m + n)} % 2 } \over 2} - x$
+        - 2. 满足了条件1后，每个x就可以得到一个y ,这时需要满足条件二。
+            - 由于A和B初始是有序的: A[x-1] <= A[x]，B[y-1] <= B[y];
+            - 此时若A[x-1] <= B[y] 且 B[y-1] <= A[x]，则就相当于满足了条件2。
+        - 3. 通过举例的方式很快可以发现：
+            - 当m + n为奇数时，ans = Max(A[x-1], B[y-1])；
+            - 当m + n为偶数时，ans = (Max(A[x-1], B[y-1]) + Min(A[x], B[y]))/2；
+```
+                   |
+     A[0]...A[x-1] | A[x]...A[m-1]
+B[0],B[1]...B[y-1] | B[y],B[y+1]...B[n-1]
+                   |
+                   
+```
+- [参考网页](https://blog.csdn.net/Fantastic_/article/details/88938167)
+
+#### 二分法相关题目列表
+1. 在旋转排序数组中寻找目标值
+2. 二维数组的查找
+3. 两个有序数组的中位数
+4. 
 
 ### 数组子序列，子数组
 
@@ -847,6 +878,9 @@ int main(int argc )
 - 跟谁学
     - 删除数组中重复出现的数字 
     - 华容道 （BFS）
+- 小米
+    - 数组中逆序对的个数
+    
 ###  多个有序数组合并成一个有序数组（C++实现） 
 - [思路](https://blog.csdn.net/qiuye2014/article/details/86707126)利用优先队列（即小顶堆）自动调整顺序的特点
     - 将n个数组的第一个元素构建优先队列（小顶堆）
