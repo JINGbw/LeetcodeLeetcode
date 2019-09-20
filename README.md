@@ -603,6 +603,38 @@ LCA问题可以看做是询问式的，即给出一系列询问，程序对一�
 - [ 参考网页：](https://www.cnblogs.com/neuzk/p/9487301.html)
 - 相关题目：二叉树根节点到某一结点的路径 , 两个链表的第一个节点 
 
+### 合并两个二叉搜索树
+
+- 题目：现在有两个二叉搜索树 如何用线性时间合并这两个二叉搜索树？
+- 思路：假设二叉搜索树有m个元素和n个元素，中序遍历得到两个排好序的数组，大小为m和n ，时间复杂度是O(m)和O(n),把两个数组合并成一个数组，时间复杂度是O(m+n),重新建立平衡二叉树又花费O(m+n)。
+- 写一个函数，建一个平衡二叉树，输入数组，起始和终止，返回一个平衡二叉树的根节点。先选择中间的点作为二叉树的根节点(二分法)，左边的点，就是递归左边，右边的点就是递归右边。
+
+```
+
+#include <stdio.h>
+struct BST
+{
+	BST(int a):data(a){}
+	int data;
+	BST* left;
+	BST* right;
+};
+
+BST* sortedArrToBST(int arr[],int start,int end)
+{
+	if (start>end)
+	{
+		return NULL;
+	}
+	int midd = (start+end)/2;
+	BST* root = new BST(arr[midd]);
+	root->left = sortedArrToBST(arr,start,midd-1);
+	root->right = sortedArrToBST(arr,midd+1,end);
+	return root;
+
+```
+
+
 ## 队列和栈
 ### 225.用队列实现栈
 
