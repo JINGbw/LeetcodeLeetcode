@@ -699,12 +699,30 @@ dp[i][k][0] = max(dp[i-1][k][0], dp[i-1][k][1] + prices[i])
 dp[i][k][1] = max(dp[i-1][k][1], dp[i-1][k-1][0] - prices[i])
 ```
 
+
 ### 硬币找零，即数字和为sum的几种问题 -百度面试
+
 #### 问题一
 - 题目：假设有几种硬币，如1、3、5，并且数量无限。请找出能够组成某个数目的找零所使用最少的硬币数。
 - [思路](https://blog.csdn.net/weixin_41462047/article/details/81254766):动态规划的思想，用 dp[] 存放自底向上问题的解。dp[] 大小为 amount，```dp[k] = min(dp[k - coin[i]) + 1```
 
-### 问题二（没看懂）
+```
+int coinchange(vector<int>coin, int target){
+    vector<int>dp(target+1,target+1);
+    dp[0]= 0;
+    for(int i = 0 ; i<target ;i++){
+        for(int j = 0 ; j<coin.size(); j++ ){
+        if(j>=coin[j]){
+            dp[i] = min(dp[i] , dp[i - coin[j]]); 
+           }
+        }
+    }
+    return dp[target]>target ? -1 :dp[target];//返回是-1代表的是无解
+}
+```
+
+
+#### 问题二（没看懂）
 - 题目：将上题中的求最小的硬币数，改成所有的方案。即，假设有几种硬币，并且数量无限。请找出能够组成某个数目的找零**所有的**方案数。
 - 思路：用 dp[i, j] 表示：使用 第 1,2,…,i 种面值的硬币时，需要找金额为 j 的钱，最多可采用多少种不同的方式。 
 **i 表示可用的硬币种类数，j表示 需要找回的零钱**
@@ -712,7 +730,7 @@ dp[i][k][1] = max(dp[i-1][k][1], dp[i-1][k-1][0] - prices[i])
 有两种情况：对于某种面值的硬币，要么使用了它，dp[i, j - coins[i]]。要么不使用它，dp[i - 1, j] 。所以，dp[i, j] = dp[i, j - coins[i]] + dp[i - 1, j]
 
 
-### 100层楼扔鸡蛋 - 扔两个鸡蛋或者三个鸡蛋 - 百度+美团
+#### 100层楼扔鸡蛋 - 扔两个鸡蛋或者三个鸡蛋 - 百度+美团
 #### 两个鸡蛋
 - 题目：100层楼扔鸡蛋，最快速度找出，哪层是鸡蛋碎的临界点
 - 思路0：最原始方法：二分法
@@ -742,12 +760,29 @@ dp[i][k][1] = max(dp[i-1][k][1], dp[i-1][k-1][0] - prices[i])
     3. 楼层边界 0层楼，第一行扔0次，1层楼，第2行，要扔1次。
     4. 状态方程 都从2开始。用一个变量result存储最终结果，先设为最大的数Integer.MAX_VALUE。
 对于每一个dp[floor][egg]（一共有i层，N个鸡蛋）考虑它从每一层楼扔下碎了和没有碎两种情况,综合最大需要多少次找到那层。
+
 ```
                 / 碎了 继续尝试更低的 i-1 层 broken = dp[i-1][egg-1]
  初始楼层是第i层                                                      
                 \ 没碎 继续尝试更高的 floor-i 层 unbroken = dp[floor-i][egg]
                   result = min(max(dp[i-1][egg-1]+1,dp[floor-i][egg]+1) ,result) 
 就是选择，将（所有的楼层都作为第一次扔的楼层中最大的扔鸡蛋次数）里面最少的 就是最终楼层的层数。
+```
+
+
+``` 
+for(int floor = 2; floor<M+1; floor++){
+  for(int egg = 2 ; egg < N+1 ; egg++){
+     int res = 101;//不可能扔101次
+     for(inr drop = 1 ; drop <= floor ){//从第drop层扔 
+        int broken = dp[drop-1][egg-1]; //鸡蛋打破了————转换成了 egg-1个鸡蛋从drop-1层扔的问题了
+        int unbroken = dp[floor-drop][egg]; //鸡蛋没有打破————转换成了 
+        int condition = min(broken, unbroken); //
+        res = min(condition , res );
+     }
+     dp[egg][floor] = res;
+  }
+}
 ```
 
 
